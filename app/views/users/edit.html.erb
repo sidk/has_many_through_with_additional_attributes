@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+  <%= @user.name %>
+  <br />
+  <% Group.all.each do |group| %>
+    <%= check_box_tag 'user[group_ids][]', group.id, @user.groups.include?(group) %>
+    <%= group.name %>
+    <br />
+  <% end %>
+  <%= f.submit 'Update User' %>
+<% end %>

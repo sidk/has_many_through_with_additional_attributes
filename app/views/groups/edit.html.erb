@@ -1,0 +1,16 @@
+<%= simple_form_for @group do |f| %>
+  <%= @group.inspect %>
+  <br />
+  <% if @group.user_groups.present? %>
+    <%= f.fields_for :user_groups do |ugf| %>
+      <% user = ugf.object.user %>
+      <%= user.name rescue 'invalid ug' %>
+      Admin?
+      <%= ugf.check_box :admin %>
+      <br />
+    <% end %>
+  <% else %>
+    No Users in this group yet
+  <% end %>
+  <%= f.submit 'Update group' %>
+<% end %>
