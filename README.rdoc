@@ -99,8 +99,6 @@ And that's it! You should now be able to update this admin attribute on the `Use
 
 I've posted an [example app on github][4] - check it out if you need more info about how exactly to get this to work. If you're still stuck, or are dealing with a use case which is not similar to this, post in the comments section below and I'll try to help.
 
-[mc4wp_form]
-
  [1]: http://ducktypelabs.com/how-a-has_many-through-association-works-in-practice/
  [2]: http://railscasts.com/episodes/17-habtm-checkboxes-revised
  [3]: http://theartandscienceofruby.com/2015/06/23/which-activerecord-association-should-i-use-has-and-belongs-to-many-or-has-many-through/
