@@ -3,6 +3,7 @@
   <br />
   <% Group.all.each do |group| %>
     <%= check_box_tag 'user[group_ids][]', group.id, @user.groups.include?(group) %>
+    <%= hidden_field_tag 'user[group_ids][]', '' %>
     <%= group.name %>
     <br />
   <% end %>

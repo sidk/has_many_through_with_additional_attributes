@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users, only: [:edit, :update]
+  resources :group_assignments, only: [:edit, :update]
   resources :groups, only: [:edit, :index, :update]
 
   # Example resource route with options:

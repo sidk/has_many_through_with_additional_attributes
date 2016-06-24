@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def edit
     user
-    build_user_groups
   end
 
   def update
@@ -17,11 +16,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(group_ids: [])
-  end
-
-  def build_user_groups
-    Group.all.each do |group|
-      user.user_groups.build(group_id: group.id)
-    end
   end
 end

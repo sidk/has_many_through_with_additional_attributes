@@ -1,0 +1,11 @@
+<%= form_for @group_assignment, url: group_assignment_path, html: { method: :patch } do |f| %>
+  <br />
+  <%= f.fields_for :user_groups do |ug| %>
+    <%= ug.check_box :group_id, { checked: ug.object.id.present? }%>
+    <%= ug.object.group.name %>
+    <%= ug.check_box :admin %>
+    Admin?
+    <br />
+  <% end %>
+  <%= f.submit 'Assign Groups' %>
+<% end %>
