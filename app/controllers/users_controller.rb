@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     user
+    user.user_groups.build unless user.user_groups.build.present?
   end
 
   def create
