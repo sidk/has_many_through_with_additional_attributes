@@ -3,13 +3,23 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def new
+    @group = Group.new
+  end
+
   def edit
     group
   end
 
+  def create
+    @group = Group.new(group_params)
+    @group.save
+    redirect_to groups_path
+  end
+
   def update
     group.update(group_params)
-    render :edit
+    redirect_to groups_path
   end
 
   private
@@ -19,7 +29,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group)
-      .permit(user_groups_attributes: [:admin, :id])
+    params.require(:group).permit(:name)
   end
 end

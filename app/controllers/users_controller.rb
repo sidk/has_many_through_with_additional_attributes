@@ -1,12 +1,27 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def new
+    @user = User.new
+    @user.user_groups.build
+  end
+
   def edit
     user
-    build_user_groups
+    user.user_groups.build unless user.user_groups.build.present?
+  end
+
+  def create
+    @user = User.new(user_params)
+    @user.save
+    redirect_to users_path
   end
 
   def update
     user.update(user_params)
-    render :edit
+    redirect_to users_path
   end
 
   private
@@ -16,12 +31,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(group_ids: [])
-  end
-
-  def build_user_groups
-    Group.all.each do |group|
-      user.user_groups.build(group_id: group.id)
-    end
+    params.require(:user).permit(:name, user_groups_attributes: [:id, :user_id, :group_id, :admin, :_destroy])
   end
 end

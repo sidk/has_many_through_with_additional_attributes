@@ -1,6 +1,6 @@
 <% @groups.each do |group| %>
   <%= group.name %>
   <%= group.id %>
-  <%= group.users.inspect %>
+  <%= link_to 'Edit', edit_group_path(group) %>
   <br />
 <% end %>

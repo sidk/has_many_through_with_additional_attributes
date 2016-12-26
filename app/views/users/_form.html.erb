@@ -1,0 +1,15 @@
+<%= simple_form_for(@user) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, label: "Name" %>
+  </div>
+  <%= f.fields_for :user_groups do |builder| %>
+    <%= render 'user_group_fields', f: builder %>
+    <div id="links">
+      <center><%= link_to_add_association "Add Group", f, :user_groups %></center>
+    </div>
+    <br>
+  <% end %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
