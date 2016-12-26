@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <%= f.label :gruop_id, 'Group: ' %>
+  <%= f.collection_select :group_id, Group.all, :id, :name, {prompt: true}, { class: 'form-control' } %>
+  <%= f.input :admin  %>
+  <br>
+  <center><%= link_to_remove_association "Remove", f %></center>
+  <br>
+</div>

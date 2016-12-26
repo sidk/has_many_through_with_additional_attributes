@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.user_groups.build
   end
 
   def edit
@@ -29,12 +30,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name)
-  end
-
-  def build_user_groups
-    Group.all.each do |group|
-      user.user_groups.build(group_id: group.id)
-    end
+    params.require(:user).permit(:name, user_groups_attributes: [:id, :user_id, :group_id, :admin, :_destroy])
   end
 end
